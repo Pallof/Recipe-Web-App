@@ -55,19 +55,20 @@ An Example List with Embedded Items:
 
 ## Wireframes
 
+
 (___TODO__: wireframes for all of the pages on your site; they can be as simple as photos of drawings or you can use a tool like Balsamiq, Omnigraffle, etc._)
 
-/list/create - page for creating a new shopping list
+/cook/add adding a recipe to the homepage
 
-![list create](documentation/list-create.png)
+![adding recipe](WireFraming/Add-recipe.png)
 
-/list - page for showing all shopping lists
+/home - page for showing all recipes
 
-![list](documentation/list.png)
+![list](WireFraming/HOMEPAGE.png)
 
-/list/slug - page for showing specific shopping list
+/cook/login - login/user creation page
 
-![list](documentation/list-slug.png)
+![list](WireFraming/Login-Page.png)
 
 ## Site map
 
