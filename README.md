@@ -10,8 +10,7 @@ My project is a recipe/ online cookbook. Where authors can provide their recipes
 It will provide many recipes in of which people with accounts can create, so that an the author of the 
 recipe can get recognition for it. The recipes will contain the name of the recipe, ingredients required 
 to make the dish, followed by the steps on how to create. There will also be images that can be shown as
-the 'expected' end result. People can also filter the dishes they want by name, or rather to be more specific if they want to cook a certain dish with a certain ingredient. They can filter by ingredients and see which dish
-specifically contains that desired ingredient.
+the 'expected' end result. People can also filter the dishes they want by name, or rather to be more specific if they want to cook a certain dish with a certain ingredient. They can filter by ingredients and see which dish specifically contains that desired ingredient.
 
 
 
@@ -60,11 +59,11 @@ An Example List with Embedded Items:
 
 /cook/add adding a recipe to the homepage
 
-![adding recipe](WireFraming/Add-recipe.png)
+![adding recipe](WireFraming/Add-Recipe.png)
 
 /home - page for showing all recipes
 
-![list](WireFraming/HOMEPAGE.png)
+![homepage](WireFraming/HOMEPAGE.png)
 
 /cook/login - login/user creation page
 
