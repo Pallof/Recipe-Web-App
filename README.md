@@ -62,7 +62,7 @@ An Example List with Embedded Items:
 
 /home - page for showing all recipes
 
-![homepage](WireFraming/HOMEPAGE.png)
+![homepage](WireFraming/HOMEPAGE.PNG)
 
 /cook/login - login/user creation page
 
