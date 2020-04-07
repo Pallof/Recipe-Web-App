@@ -1,7 +1,7 @@
 
-Simple Dan's Recipe Book
+# Simple Dan's Recipe Book
 
-# Shoppy Shoperson 
+Shoppy Shoperson 
 
 ## Overview
 
