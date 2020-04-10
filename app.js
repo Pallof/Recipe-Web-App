@@ -12,6 +12,8 @@ app.set('view engine', 'hbs');
 app.use(express.static(path.join(__dirname, 'public'))); //change, make sure this is correct
 app.use(express.urlencoded({ extended: false }));
 
+//implement passport function here
+
 const sessionOptions = { 
 	secret: 'secret for signing session id', 
 	saveUninitialized: false, 
@@ -19,16 +21,24 @@ const sessionOptions = {
 };
 
 
-app.get('route', function(req, res) {
-    res.render('hbsTemplate', {variable: content});
+app.get('/', function(req, res) { //this is going to be our homepage localhost:3000/
+    res.render('home'); //, {variable: content}
 });
 
-app.get('route', function(req, res) {
-    res.render('hbsTemplate', {variable: content});
+app.get('/add', function(req, res) {
+    res.render('add'); //, {variable: content}
 });
 
-app.post('route', function(req, res) {
-    res.render('hbsTemplate', {variable: content});
+app.get('/login', function(req, res) {
+    res.render('login'); //, {variable: content}
+});
+
+
+
+app.post('/add', function(req, res) {
+    res.render('hbsTemplate'); //, {variable: content}
+
+    res.redirect('/');
 });
 //basic boiler plate code
 

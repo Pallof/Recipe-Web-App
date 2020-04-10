@@ -1,0 +1,27 @@
+{
+  "name": "pallof-package",
+  "version": "1.0.0",
+  "description": "Package.json for my final project",
+  "main": "app.js",
+  "dependencies": {
+    "eslint": "^6.8.0",
+    "express-session": "^1.17.0",
+    "express": "^4.17.1",
+    "hbs": "^4.1.1",
+    "mongoose": "^5.9.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nyu-csci-ua-0480-008-spring-2020/Pallof-final-project.git"
+  },
+  "author": "Daniel Sing",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nyu-csci-ua-0480-008-spring-2020/Pallof-final-project/issues"
+  },
+  "homepage": "https://github.com/nyu-csci-ua-0480-008-spring-2020/Pallof-final-project#readme"
+}
