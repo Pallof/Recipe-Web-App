@@ -1,9 +1,9 @@
 
 const mongoose = require('mongoose');
 
-const Dish = new mongoose.Schema({
+const dish = new mongoose.Schema({
     dishName: { type: String, required: true },
-    Ingredients: { type: String, required: true },
+    ingredients: { type: String, required: true },
     steps: { type: String, required: true },
     createdAt: { type: Date, required: true },
     createdBy: {type: String }

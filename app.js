@@ -22,6 +22,8 @@ const sessionOptions = {
 
 
 app.get('/', function(req, res) { //this is going to be our homepage localhost:3000/
+    //implement filtering here
+
     res.render('home'); //, {variable: content}
 });
 
@@ -37,7 +39,7 @@ app.get('/login', function(req, res) {
 
 app.post('/add', function(req, res) {
     res.render('hbsTemplate'); //, {variable: content}
-
+    
     res.redirect('/');
 });
 //basic boiler plate code
