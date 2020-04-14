@@ -3,6 +3,7 @@ const express = require('express');
 const session = require('express-session');
 const path = require('path');
 const app = express();
+const authRoutes = require('./routes/auth-routes'); //here is where we will pull our routes
 const mongoose = require('mongoose');
 require("./db");
 
@@ -21,6 +22,9 @@ const sessionOptions = {
 };
 
 
+app.use('/auth', authRoutes);
+
+
 app.get('/', function(req, res) { //this is going to be our homepage localhost:3000/
     //implement filtering here
 
@@ -32,14 +36,20 @@ app.get('/add', function(req, res) {
 });
 
 app.get('/login', function(req, res) {
+    
     res.render('login'); //, {variable: content}
 });
 
 
 
 app.post('/add', function(req, res) {
-    res.render('hbsTemplate'); //, {variable: content}
-    
+    new dish({
+        dishName = req.body.dishName,
+        ingredients = req.body.ingredients,
+        steps = req.body.steps,
+
+    })
+
     res.redirect('/');
 });
 //basic boiler plate code
