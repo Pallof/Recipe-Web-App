@@ -6,6 +6,7 @@ const app = express();
 const authRoutes = require('./routes/auth-routes'); //here is where we will pull our routes
 const mongoose = require('mongoose');
 require("./db");
+const passportSetup = require('./config/passport-setup');
 
 const port = 3000;
 
@@ -36,7 +37,6 @@ app.get('/add', function(req, res) {
 });
 
 app.get('/login', function(req, res) {
-    
     res.render('login'); //, {variable: content}
 });
 
