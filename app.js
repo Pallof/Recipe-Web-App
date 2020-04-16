@@ -43,10 +43,11 @@ app.get('/login', function(req, res) {
 
 
 app.post('/add', function(req, res) {
+    //https://stackoverflow.com/questions/42006503/invalid-shorthand-property-initializer, love me some silly mistakes
     new dish({
-        dishName = req.body.dishName,
-        ingredients = req.body.ingredients,
-        steps = req.body.steps,
+        dishName : req.body.dishName,
+        ingredients : req.body.ingredients,
+        steps : req.body.steps,
 
     })
 
