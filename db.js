@@ -1,6 +1,6 @@
 
 const mongoose = require('mongoose');
-const keys = require('./config/keys');
+const keys = require('/config/keys');
 
 const dishSchema = new mongoose.Schema({
     dishName: { type: String, required: true },
@@ -25,7 +25,7 @@ const User = mongoose.model('user', userSchema);
 //hard coding this bc this will not change and will remain static
 let dbconf = keys.mongodb.dbconf;
 //mongoose.connect(process.env.dbconf);
-
+mongoose.connect(process.env)
 mongoose.connect(dbconf, {useNewUrlParser: true, useUnifiedTopology: true}, () => {
     console.log("MONGO DB CONNECTION");
 });
