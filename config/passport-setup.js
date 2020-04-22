@@ -20,9 +20,9 @@ passport.use(new GoogleStrategy({
             googleID: profile.id
 
         }).save().then((newUser) => {
-            console.log("The new user created it \t" + newUser);
+            console.log("The new user created it \t" + newUser); //testing what this prints outß
             
-        })
+        });
         
     })
 );

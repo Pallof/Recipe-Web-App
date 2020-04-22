@@ -3,9 +3,11 @@ const express = require('express');
 const session = require('express-session');
 const path = require('path');
 const app = express();
-const authRoutes = require('./routes/auth-routes'); //here is where we will pull our routes
 const mongoose = require('mongoose');
 require("./db");
+
+
+const authRoutes = require('./routes/auth-routes'); //here is where we will pull our routes
 const passportSetup = require('./config/passport-setup');
 
 const port = 3000;
@@ -16,11 +18,17 @@ app.use(express.urlencoded({ extended: false }));
 
 //implement passport function here
 
+/*
 const sessionOptions = { 
 	secret: 'secret for signing session id', 
 	saveUninitialized: false, 
 	resave: false 
 };
+*/
+const Dish = mongoose.model("dish")
+const User = mongoose.model("user");
+
+
 
 
 app.use('/auth', authRoutes);
@@ -28,7 +36,7 @@ app.use('/auth', authRoutes);
 
 app.get('/', function(req, res) { //this is going to be our homepage localhost:3000/
     //implement filtering here
-
+    
     res.render('home'); //, {variable: content}
 });
 
@@ -37,6 +45,7 @@ app.get('/add', function(req, res) {
 });
 
 app.get('/login', function(req, res) {
+    
     res.render('login'); //, {variable: content}
 });
 
@@ -48,6 +57,9 @@ app.post('/add', function(req, res) {
         dishName : req.body.dishName,
         ingredients : req.body.ingredients,
         steps : req.body.steps,
+        createdAt: Date(Date.now()),
+        //createdBy: need to get google user ID 
+
 
     })
 

@@ -16,16 +16,15 @@ const userSchema = new mongoose.Schema({
 
 });
 
-//hard coding this bc this will not change and will remain static
-let dbconf = 'mongodb://localhost/pallofFinal';
-
-
-mongoose.connect(dbconf, {useNewUrlParser: true, useUnifiedTopology: true}, () => {
-    console.log("MONGO DB CONNECTION");
-});
-
 
 mongoose.model('dish', dishSchema);
 const User = mongoose.model('user', userSchema);
+
+
+//hard coding this bc this will not change and will remain static
+let dbconf = 'mongodb://localhost/pallofFinal';
+mongoose.connect(dbconf, {useNewUrlParser: true, useUnifiedTopology: true}, () => {
+    console.log("MONGO DB CONNECTION");
+});
 
 module.exports = User;
