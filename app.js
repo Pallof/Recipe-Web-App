@@ -6,7 +6,7 @@ const app = express();
 const mongoose = require('mongoose');
 require("./db");
 const cookieSession = require('cookie-session');
-const keys = require('./config/keys/');
+const keys = require('./config/keys');
 const passport = require('passport');
 
 const profileRoutes = require('./routes/profile-routes');
@@ -28,7 +28,7 @@ app.get('/', function(req, res) { //this is going to be our homepage localhost:3
 
 
 app.set('view engine', 'hbs');
-app.use(express.static(path.join(__dirname))); //change, make sure this is correct
+app.use(express.static(path.join(__dirname, 'public'))); //change, make sure this is correct
 app.use(express.urlencoded({ extended: false }));
 
 const Dish = mongoose.model("dishes")
