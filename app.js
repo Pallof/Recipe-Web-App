@@ -75,3 +75,4 @@ app.post('/add', function(req, res) {
 app.listen(process.env.PORT || 3000);
 
 //module.exports =
+////"test": "echo \"Error: no test specified\" && exit 1" this was in package.json lets try removing it
