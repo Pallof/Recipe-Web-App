@@ -6,7 +6,7 @@ const app = express();
 const mongoose = require('mongoose');
 require("./db");
 const cookieSession = require('cookie-session');
-const keys = require('/config/keys/');
+const keys = require('./config/keys/');
 const passport = require('passport');
 
 const profileRoutes = require('./routes/profile-routes');
