@@ -15,17 +15,22 @@ const passportSetup = require('./config/passport-setup');
 
 const port = 3000;
 
+
+app.get('/', function(req, res) { //this is going to be our homepage localhost:3000/
+    //implement filtering here
+    //const results = req.query;
+    Dish.find({}, function(err, varToStoreResult, count){
+        res.render('home', {variable: varToStoreResult});
+    });
+
+    //res.render('home'); //, {variable: content}
+});
+
+
 app.set('view engine', 'hbs');
 app.use(express.static(path.join(__dirname, 'public'))); //change, make sure this is correct
 app.use(express.urlencoded({ extended: false }));
-/*
-const sessionOptions = { 
-	secret: 'secret for signing session id', 
-	saveUninitialized: false, 
-	resave: false 
-};
-app.use(sessionOptions); 
-*/
+
 const Dish = mongoose.model("dishes")
 const User = mongoose.model("user");
 
@@ -40,16 +45,6 @@ app.use(passport.session()); //initialing cookie sessions
 
 app.use('/auth', authRoutes);
 app.use('/profile', profileRoutes);
-
-app.get('/', function(req, res) { //this is going to be our homepage localhost:3000/
-    //implement filtering here
-    //const results = req.query;
-    Dish.find({}, function(err, varToStoreResult, count){
-        res.render('home', {variable: varToStoreResult});
-    });
-
-    //res.render('home'); //, {variable: content}
-});
 
 app.get('/add', function(req, res) {
     res.render('add'); //, {variable: content}
