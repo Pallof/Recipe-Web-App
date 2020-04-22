@@ -1,5 +1,6 @@
 
 const mongoose = require('mongoose');
+const keys = require('./config/keys');
 
 const dishSchema = new mongoose.Schema({
     dishName: { type: String, required: true },
@@ -17,12 +18,12 @@ const userSchema = new mongoose.Schema({
 });
 
 
-mongoose.model('dish', dishSchema);
+mongoose.model('dishes', dishSchema);
 const User = mongoose.model('user', userSchema);
 
 
 //hard coding this bc this will not change and will remain static
-let dbconf = 'mongodb://localhost/pallofFinal';
+let dbconf = keys.mongodb.dbconf;
 mongoose.connect(dbconf, {useNewUrlParser: true, useUnifiedTopology: true}, () => {
     console.log("MONGO DB CONNECTION");
 });

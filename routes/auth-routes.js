@@ -25,7 +25,9 @@ router.get('/google', passport.authenticate('google', {
 
 
 router.get('/google/redirect', passport.authenticate('google'), (req,res) => {
-    res.send("YOU REACHED THE REDIRECT URI");
+    //res.send("YOU REACHED THE REDIRECT URI");
+    res.send(req.user);
+    
 })
     //here is where we interact with google, using passport
     //res.send('Logging in with google'); we want to handle this with passport
