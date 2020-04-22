@@ -9,6 +9,7 @@ const cookieSession = require('cookie-session');
 const keys = require('./config/keys');
 const passport = require('passport');
 
+const profileRoutes = require('./routes/profile-routes');
 const authRoutes = require('./routes/auth-routes'); //here is where we will pull our routes
 const passportSetup = require('./config/passport-setup');
 
@@ -38,6 +39,7 @@ app.use(passport.initialize()); //initialing our passport
 app.use(passport.session()); //initialing cookie sessions
 
 app.use('/auth', authRoutes);
+app.use('/profile', profileRoutes);
 
 app.get('/', function(req, res) { //this is going to be our homepage localhost:3000/
     //implement filtering here

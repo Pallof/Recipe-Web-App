@@ -11,7 +11,10 @@ router.get('/login', (req, res) =>{
 
 
 router.get('/logout', (req, res)=> {
-    res.send('logging out');
+    //res.send('logging out');
+    req.logout();  //this is very confusing bc there is logout AND logOut??????
+    
+    res.redirect('/');
     //handle with passport as well
 })
 
@@ -26,7 +29,8 @@ router.get('/google', passport.authenticate('google', {
 
 router.get('/google/redirect', passport.authenticate('google'), (req,res) => {
     //res.send("YOU REACHED THE REDIRECT URI");
-    res.send(req.user);
+    //res.send(req.user);
+    res.redirect('/profile/');//redirect them 
     
 })
     //here is where we interact with google, using passport
