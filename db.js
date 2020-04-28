@@ -25,7 +25,7 @@ const User = mongoose.model('user', userSchema);
 //hard coding this bc this will not change and will remain static
 let dbconf = keys.mongodb.dbconf;
 //mongoose.connect(process.env.dbconf);
-mongoose.connect(process.env.MONGODB_URI);
-//mongoose.connect(dbconf, {useNewUrlParser: true, useUnifiedTopology: true})
+//mongoose.connect(process.env.MONGODB_URI);
+mongoose.connect(dbconf, {useNewUrlParser: true, useUnifiedTopology: true})
 
 module.exports = User;

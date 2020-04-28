@@ -4,22 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
 </head>
 
 <body>
     <h1>ADD A NEW RECIPE</h1>
-    <ol>
-        <div>Recipe Name: <input type="text" name="recipeName" id=""></div>
 
-        <div>Ingredients: </div>
-        <div><textarea name="ingredients" id="" cols="50" rows="15"></textarea></div>
+    <form method="POST", action="">
+        <ol>
+            <div>Recipe Name: <input type="text" name="recipeName" id=""></div>
+            <div>Ingredients: </div>
+            <div><textarea name="ingredients" id="" cols="50" rows="15"></textarea></div>
+            <div>Instructions:</div>
+            <div><textarea name="instructions" id="" cols="50" rows="15"></textarea></div>
 
-        <div>Instructions:</div>
-        <div><textarea name="instrctions" id="" cols="50" rows="15"></textarea></div>
+            <input type="submit" value="Add Recipe">
+            
 
-        <input type="submit" value="Add Recipe">
-        
-
-    </ol>
+        </ol>
+    </form>
 </body>
 </html>

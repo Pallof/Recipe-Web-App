@@ -13,7 +13,6 @@ router.get('/login', (req, res) =>{
 router.get('/logout', (req, res)=> {
     //res.send('logging out');
     req.logout();  //this is very confusing bc there is logout AND logOut??????
-    
     res.redirect('/');
     //handle with passport as well
 })

@@ -20,7 +20,8 @@ app.get('/', function(req, res) { //this is going to be our homepage localhost:3
     //implement filtering here
     //const results = req.query;
     Dish.find({}, function(err, varToStoreResult, count){
-        res.render('home', {variable: varToStoreResult});
+        console.log(varToStoreResult);
+        res.render('home', {variable: varToStoreResult}); //, user: req.user
     });
 
     //res.render('home'); //, {variable: content}
@@ -34,7 +35,6 @@ app.use(express.urlencoded({ extended: false }));
 const Dish = mongoose.model("dishes")
 const User = mongoose.model("user");
 
-
 //setting cookies
 app.use(cookieSession({
     maxAge: 48*60*60*1000, //this is 2 days (hours x minutes x seconds x milliseconds);
@@ -47,21 +47,20 @@ app.use('/auth', authRoutes);
 app.use('/profile', profileRoutes);
 
 app.get('/add', function(req, res) {
-    res.render('add'); //, {variable: content}
+    res.render('add', {user: req.user}); //, {variable: content}
 });
 
+/*
 app.get('/login', function(req, res) {
     res.render('login'); //, {variable: content}
 });
-
-
-
+*/
 app.post('/add', function(req, res) {
     //https://stackoverflow.com/questions/42006503/invalid-shorthand-property-initializer, love me some silly mistakes
-    new dish({
-        dishName : req.body.dishName,
+    new Dish({
+        dishName : req.body.recipeName,
         ingredients : req.body.ingredients,
-        steps : req.body.steps,
+        steps : req.body.instructions,
         createdAt: Date(Date.now()),
         //createdBy: need to get google user ID, refer to mongoschema??
 
@@ -76,3 +75,5 @@ app.listen(process.env.PORT || 3000);
 
 //module.exports =
 ////"test": "echo \"Error: no test specified\" && exit 1" this was in package.json lets try removing it
+//https://dev.to/lawrence_eagles/causes-of-heroku-h10-app-crashed-error-and-how-to-solve-them-3jnl
+//^^ LINK ABOVE SOLVED MY DEPLOYMENT PROBLEMS GOD BLESS
