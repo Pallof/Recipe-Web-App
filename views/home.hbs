@@ -10,6 +10,7 @@
 <body>
     <h1>FUN AND TASTY RECIPES </h1>
     <!-- <p> <a href="/add"> Add a recipe here</a></p> -->
+    
 
     <form method="GET" action="">
     <div>Filter by recipe name: <input type="text" name="nameFilter" id=""></div>
@@ -22,11 +23,11 @@
     <table>
     {{#each variable}}
     <tr>
-        <th>{{this.dishName}}</td>
-        <td>{{this.ingredients}}</td>
-        <td>{{this.steps}}</td>
-        <td>{{this.createdAt}}</td>
-        <td>{{this.createdBy}}</td>
+        <th>{{this.dishName}} :</td>
+        <div class="cell"> <td> <strong>Ingredients: </strong> {{this.ingredients}}</td></div>
+        <div class="cell"> <td> <strong> Steps:</strong> {{this.steps}}</td></div>
+        <div class="cell"> <td>{{this.createdAt}}</td></div>
+        <div class="cell"> <td> <strong>Author:</strong>  {{this.createdBy}}</td></div>
     </tr>
     {{/each}}
     </table>    

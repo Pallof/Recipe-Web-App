@@ -16,12 +16,22 @@ const passportSetup = require('./config/passport-setup');
 const port = 3000;
 
 
-app.get('/', function(req, res) { //this is going to be our homepage localhost:3000/
+const authCheck =  (req, res, next) => {
+    if(!req.user){ //checking if user is not logged in
+        res.redirect('/auth/login');
+
+    }
+    else{
+        next();
+    }
+}
+
+app.get('/',function(req, res) { //this is going to be our homepage localhost:3000/
     //implement filtering here
     //const results = req.query;
     Dish.find({}, function(err, varToStoreResult, count){
         console.log(varToStoreResult);
-        res.render('home', {variable: varToStoreResult}); //, user: req.user
+        res.render('home', {variable: varToStoreResult, user: req.user}); //, user: req.user
     });
 
     //res.render('home'); //, {variable: content}
@@ -46,7 +56,8 @@ app.use(passport.session()); //initialing cookie sessions
 app.use('/auth', authRoutes);
 app.use('/profile', profileRoutes);
 
-app.get('/add', function(req, res) {
+app.get('/add',authCheck, function(req, res) {
+    
     res.render('add', {user: req.user}); //, {variable: content}
 });
 
