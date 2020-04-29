@@ -28,11 +28,50 @@ const authCheck =  (req, res, next) => {
 
 app.get('/',function(req, res) { //this is going to be our homepage localhost:3000/
     //implement filtering here
-    //const results = req.query;
-    Dish.find({}, function(err, varToStoreResult, count){
-        console.log(varToStoreResult);
-        res.render('home', {variable: varToStoreResult, user: req.user}); //, user: req.user
-    });
+    const filter = req.query;
+    
+    const nF = req.query.nameFilter;
+    //console.log(nF + " THIS IS THE NAME FILTER QUERY");
+    const igF = req.query.ingredientFilter;
+    console.log(filter);
+    //dishName: req.query.nameFilter, ingredients: req.query.ingredientFilter
+
+    //Dish.find({}, function(err, varToStoreResult,){
+        console.log("FILTER------");
+        //console.log(varToStoreResult);
+        if(nF === undefined && igF === undefined){
+            Dish.find({}, function(err, varToStoreResult,){
+            res.render('home', {variable: varToStoreResult, user: req.user});
+            });
+        }
+        else if(nF !== '' && igF !== ''){
+            Dish.find({dishName: req.query.nameFilter, ingredients: req.query.ingredientFilter}, function(err, varToStoreResult,){
+            //const dishNameFiltered = varToStoreResult.filter(z => z.nameFilter === nF);
+            //const ingredientFiltered_v2 = dishNameFiltered.filter(z => z.ingredientFilter === igF);
+            res.render('home', {variable: varToStoreResult, user: req.user});
+
+            });
+        }
+        else if(nF !== ''){
+            Dish.find({dishName: req.query.nameFilter}, function(err, varToStoreResult,){
+            //const dishNameFiltered = varToStoreResult.filter(z => z.nameFilter === nF);
+            res.render('home', {variable: varToStoreResult, user: req.user});
+            //console.log(dishNameFiltered + "=============================");
+            });
+        }
+        else if(igF !== ''){
+            Dish.find({ingredients: req.query.ingredientFilter}, function(err, varToStoreResult,){
+            //const ingredientFiltered_v2 = varToStoreResult.filter(z => z.ingredientFilter === igF);
+            res.render('home', {variable: varToStoreResult, user: req.user});
+            });
+        }
+        else{
+            Dish.find({}, function(err, varToStoreResult,){
+                res.render('home', {variable: varToStoreResult, user: req.user});
+                });
+        }
+         //, user: req.user
+    //});
 
     //res.render('home'); //, {variable: content}
 });
@@ -47,7 +86,7 @@ const User = mongoose.model("user");
 
 //setting cookies
 app.use(cookieSession({
-    maxAge: 48*60*60*1000, //this is 2 days (hours x minutes x seconds x milliseconds);
+    maxAge: 12*60*60*1000, //this is 12 hours (hours x minutes x seconds x milliseconds);
     keys: [keys.session.cookieKey]
 }))
 app.use(passport.initialize()); //initialing our passport
@@ -57,7 +96,6 @@ app.use('/auth', authRoutes);
 app.use('/profile', profileRoutes);
 
 app.get('/add',authCheck, function(req, res) {
-    
     res.render('add', {user: req.user}); //, {variable: content}
 });
 
@@ -73,14 +111,14 @@ app.post('/add', function(req, res) {
         ingredients : req.body.ingredients,
         steps : req.body.instructions,
         createdAt: Date(Date.now()),
-        //createdBy: need to get google user ID, refer to mongoschema??
-
+        createdBy: req.user.username,
+        //need to get google user ID, refer to mongoschema??
     }).save(function(err, dish) {
         console.log("SAVE CALLBACK INSIDE POST REQUEST")
+        res.redirect('/');
     })
-    res.redirect('/');
+    
 });
-//basic boiler plate code
 
 app.listen(process.env.PORT || 3000);
 
