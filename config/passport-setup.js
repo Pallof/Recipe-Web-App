@@ -20,7 +20,8 @@ passport.use(new GoogleStrategy({
     //option for the strategy
     clientID: keys.google.clientID,
     clientSecret: keys.google.clientSecret,
-    callbackURL: "http://localhost:3000/auth/google/redirect"  //callbackURL IS CASE SENSITIVE
+    //callbackURL: "http://localhost:3000/auth/google/redirect"  //callbackURL IS CASE SENSITIVE
+    callbackURL: "http://pallofeasycook.herokuapp.com/auth/google/redirect",
     // /auth/google/redirect  https://stackoverflow.com/questions/32924963/missing-required-parameter-redirect-uri-with-passport-google-oauth
 
     }, (accessToken, refreshToken, profile, done) => {  //passport callback function
