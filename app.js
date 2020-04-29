@@ -45,24 +45,28 @@ app.get('/',function(req, res) { //this is going to be our homepage localhost:30
             });
         }
         else if(nF !== '' && igF !== ''){
-            Dish.find({dishName: req.query.nameFilter, ingredients: req.query.ingredientFilter}, function(err, varToStoreResult,){
+            Dish.find({dishName: new RegExp(nF, 'i'), ingredients: new RegExp(igF, 'i')}, function(err, varToStoreResult,){
             //const dishNameFiltered = varToStoreResult.filter(z => z.nameFilter === nF);
             //const ingredientFiltered_v2 = dishNameFiltered.filter(z => z.ingredientFilter === igF);
             res.render('home', {variable: varToStoreResult, user: req.user});
 
             });
         }
-        else if(nF !== ''){
-            Dish.find({dishName: req.query.nameFilter}, function(err, varToStoreResult,){
+        else if(nF!==''){
+            Dish.find({dishName: new RegExp(nF, 'i')}, function(err, varToStoreResult,){
             //const dishNameFiltered = varToStoreResult.filter(z => z.nameFilter === nF);
             res.render('home', {variable: varToStoreResult, user: req.user});
             //console.log(dishNameFiltered + "=============================");
             });
         }
-        else if(igF !== ''){
-            Dish.find({ingredients: req.query.ingredientFilter}, function(err, varToStoreResult,){
-            //const ingredientFiltered_v2 = varToStoreResult.filter(z => z.ingredientFilter === igF);
+        else if(igF!==''){
+            console.log("HIT");
+            Dish.find({ingredients:  new RegExp(igF, 'i')}, function(err, varToStoreResult,){
+            //https://xuguoming.wordpress.com/2015/02/11/using-variable-regex-with-mongodb-query-in-node-js/
+            //https://stackoverflow.com/questions/26699885/how-can-i-use-a-regex-variable-in-a-query-for-mongodb, lot of learning happening today
+            //console.log(typeof(igF));
             res.render('home', {variable: varToStoreResult, user: req.user});
+            
             });
         }
         else{
